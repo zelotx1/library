@@ -14,7 +14,7 @@
         .login{
             background-color:rgba(96,96,96,0.8);
             width: 500px;
-            height: 400px;
+            height: 530px;
             margin-top: 160px;
             color: white;
             padding: 50px;
@@ -23,39 +23,41 @@
         h3{
             text-align: center;
         }
-        #btn1,#btn2{        
-            width: 198px;
-            margin-top: 25px;
-            border: 0px;
-            color: white;
-        }
-        #btn1{
-            background-color: #104E8B; 
-        }
         #btn2{
             background-color: #1C86EE;
+            width: 198px;
+            margin-top: 25px;
+                        border: 0px;
+            color: white;
         }
         #btns{
-            width: 500px;
+            width: 200px;
         }
     </style>
 </head>
 <body>
 <div class="container">
 <div class="login center-block">
-    <h3>登录图书管理系统</h3>
+    <h3>注册图书管理系统</h3>
     <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
     <input id="inp1" type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
   </div>
   <div class="form-group">
+    <label for="exampleInputPassword1">Email</label>
+    <input id="inp2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Email">
+  </div>
+    <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input id="inp2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input id="inp3" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">Password Again</label>
+    <input id="inp4" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
   <div id="btns" class="center-block">
-   <a  href="#"id="btn1" type="button" class="btn btn-default ">登录</a>
-   <a  href="signup.html"id="btn2" type="button" class="btn btn-default">注册</a>
+   <button id="btn2" type="submit" class="btn btn-default">注册</button>
   </div>
   
 </form>
