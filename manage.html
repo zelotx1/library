@@ -90,7 +90,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!-- 操作栏 -->
+<!-- 添加书籍信息 -->
 <div id="ctr">
 <h4>添加书籍信息</h4>
 <button id="btn1" type="button" onclick="check()" class="btn btn-default navbar-right">添加</button>
@@ -161,12 +161,14 @@
    </div>
     </div>
 <script>
+//创建信息data数组
       var data=[{"book":"《解忧杂货店》","author":"东野圭吾","pub":"南海出版社","num":35,"price":"￥27.30<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
            {"book":"《芳华》","author":"严歌苓","pub":"人民文学出版社","num":127,"price":"￥31"},
            {"book":"《我们仨》","author":"杨绛","pub":"人民文学出版社","num":54,"price":"￥15.9"},
            {"book":"《原则》","author":"瑞·达利欧","pub":"中信出版社","num":256,"price":"￥66"},
            {"book":"《白夜行》","author":"东野圭吾","pub":"南海出版社","num":155,"price":"￥41.10"},
            {"book":"《我与地坛》","author":"史铁生","pub":"人民文学出版社","num":94,"price":"￥19.60"}];
+//把json数据加载到页面
     window.onload=function fuuu(){
 
         var table=document.getElementById("table");
@@ -184,6 +186,7 @@
             c5.innerHTML=data[i].price;
         }
     }
+//把输入框内容转换为json格式
     $("#btn1").click(function(){
       parArr = {};
        var book = $('#inp1').val().replace(/(^\s*)|(\s*$)/g, "");
@@ -197,10 +200,13 @@
        var price = $('#inp5').val().replace(/(^\s*)|(\s*$)/g, "")+"<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>";
        parArr.price = price;
        var params = JSON.stringify(parArr);
-       data.push(params);
+       var str1 = JSON.parse(params); 
+//存入数组
+       data.push(str1);
+//遍历数组最后一个元素添加行
         function add(){
-            var table=document.getElementById("table");
-        for(var i=0;i<data.length;i++){
+        var table=document.getElementById("table");
+        for(var i=data.length-1;i<data.length;i++){
             var row=table.insertRow(table.rows.length);
             var c1=row.insertCell(0);
             c1.innerHTML=data[i].book;
