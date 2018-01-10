@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-image: url(ima/bg1.jpg);
+            background-size: 100%;
+        }
+        #list{
+            background-color: rgba(255,255,255,1);
+            margin-top: 100px;
+        }
+        td{
+            width: 200px;
+        }
+        #di{
+            width: 100%;
+            height: 100px;
+            background-color: rgba(45,45,45,0.8);
+            margin-top: 463px;
+            padding-top: 10px;
+            border-radius: 10px 10px 0px 0px;
+        }
+        .p1{
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+        }
+        #div1,#div2{
+            display:inline-block;
+            width: 30%;
+        }
+        #ctr{
+            background-color: rgba(45,45,45,0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h4{
+            display: inline-block;
+            color: white;
+        }
+        #btn1{
+            display: inline-block;
+            background-color: #1C86EE;
+            width: 100px;
+            border: 0px;
+            color: white;
+        }
+        .col-lg-4{
+            padding-bottom: 20px;
+        }
+        #btn2{
+            background-color: #EE3B3B;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- 导航栏 -->
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">图书管理系统</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="read.html">浏览 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="add.html">增删</a></li>
+        <li><a href="find.html">查询</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="library.html">登录</a></li>
+        <li><a href="signup.html">注册</a></li>
+        <li><a href="shi.html">联系我们</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 操作栏 -->
+<div id="ctr">
+<h4>添加书籍信息</h4>
+<button id="btn1" type="button" onclick="check()" class="btn btn-default navbar-right">添加</button>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">书名</span>
+          <input id="inp1" type="text" class="form-control" placeholder="书名" aria-describedby="sizing-addon1">
+        </div>
+        <p id="p1"></p>
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">作者</span>
+          <input id="inp2" type="text" class="form-control" placeholder="作者" aria-describedby="sizing-addon1">
+        </div>
+        <p id="p2"></p>
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">出版社</span>
+          <input id="inp3" type="text" class="form-control" placeholder="出版社" aria-describedby="sizing-addon1">
+        </div>
+        <p id="p3"></p>
+    </div>
+</div>
+<div class="row" id="row2">
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">数量</span>
+          <input id="inp4" type="text" class="form-control" placeholder="数量" aria-describedby="sizing-addon1">
+        </div>
+        <p id="p4"></p>
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">单价</span>
+          <input id="inp5" type="text" class="form-control" placeholder="单价" aria-describedby="sizing-addon1">
+        </div>
+        <p id="p5"></p>
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+          <span class="input-group-addon" id="sizing-addon1">@</span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+        </div>
+    </div>
+</div>
+</div>
+<!-- 图书列表 -->
+   <div id="list">
+       <table id="table" class="table table-hover">
+        <thead>
+			<tr>
+				<th>书名</th>
+				<th>作者</th>
+				<th>出版社</th>
+				<th>数量</th>
+				<th>单价</th>
+			</tr>
+			</thead>
+       </table>
+   </div>
+<!--底部信息-->
+   <div id="di">
+       <p class="p1">图书管理系统</p>
+       <p class="p1">Copyright © 2017-2018 15150400413 杨溢超</p>
+   </div>
+    </div>
+<script>
+      var data=[{"book":"《解忧杂货店》","author":"东野圭吾","pub":"南海出版社","num":35,"price":"￥27.30<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《芳华》","author":"严歌苓","pub":"人民文学出版社","num":127,"price":"￥31"},
+           {"book":"《我们仨》","author":"杨绛","pub":"人民文学出版社","num":54,"price":"￥15.9"},
+           {"book":"《原则》","author":"瑞·达利欧","pub":"中信出版社","num":256,"price":"￥66"},
+           {"book":"《白夜行》","author":"东野圭吾","pub":"南海出版社","num":155,"price":"￥41.10"},
+           {"book":"《我与地坛》","author":"史铁生","pub":"人民文学出版社","num":94,"price":"￥19.60"}];
+    window.onload=function fuuu(){
+
+        var table=document.getElementById("table");
+        for(var i=0;i<data.length;i++){
+            var row=table.insertRow(table.rows.length);
+            var c1=row.insertCell(0);
+            c1.innerHTML=data[i].book;
+            var c2=row.insertCell(1);
+            c2.innerHTML=data[i].author;
+            var c3=row.insertCell(2);
+            c3.innerHTML=data[i].pub;
+            var c4=row.insertCell(3);
+            c4.innerHTML=data[i].num;
+            var c5=row.insertCell(4);
+            c5.innerHTML=data[i].price;
+        }
+    }
+    $("#btn1").click(function(){
+      parArr = {};
+       var book = $('#inp1').val().replace(/(^\s*)|(\s*$)/g, "");
+       parArr.book = book;
+       var author = $('#inp2').val().replace(/(^\s*)|(\s*$)/g, "");
+       parArr.author = author;
+       var pub = $('#inp3').val().replace(/(^\s*)|(\s*$)/g, "");
+       parArr.pub = pub;
+       var num = $('#inp4').val().replace(/(^\s*)|(\s*$)/g, "");
+       parArr.num = num;
+       var price = $('#inp5').val().replace(/(^\s*)|(\s*$)/g, "")+"<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>";
+       parArr.price = price;
+       var params = JSON.stringify(parArr);
+       data.push(params);
+        function add(){
+            var table=document.getElementById("table");
+        for(var i=0;i<data.length;i++){
+            var row=table.insertRow(table.rows.length);
+            var c1=row.insertCell(0);
+            c1.innerHTML=data[i].book;
+            var c2=row.insertCell(1);
+            c2.innerHTML=data[i].author;
+            var c3=row.insertCell(2);
+            c3.innerHTML=data[i].pub;
+            var c4=row.insertCell(3);
+            c4.innerHTML=data[i].num;
+            var c5=row.insertCell(4);
+            c5.innerHTML=data[i].price;
+        }
+        }
+        add();
+    });
+</script>
+</body>
+</html>
