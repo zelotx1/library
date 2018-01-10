@@ -76,10 +76,6 @@
 </div>
 </div>
 <script type="text/javascript">
-    var c1；
-    var c2；
-    var c3；
-    var c4；
 //用户名验证
     function input1(){
         var name=document.getElementById("inp1").value;
@@ -143,6 +139,10 @@
     }
 //注册校验
     function check(){
+        var ok1;
+        var ok2;
+        var ok3;
+        var ok4;
         var inp1=document.getElementById("inp1").value;
         var inp2=document.getElementById("inp2").value;
         var inp3=document.getElementById("inp3").value;
@@ -152,6 +152,8 @@
         var txt3=document.getElementById("p3");
         var txt4=document.getElementById("p4");
         var txt5=document.getElementById("p5");
+        var re1=  /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+        var re2 =/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
         if(!inp1){
             txt1.innerHTML="请输入用户名";
         }
@@ -163,6 +165,30 @@
         }
         if(!inp4){
             txt4.innerHTML="请再次输入密码";
+        }
+        if(2<inp1.length<10&&re1.test(inp1)){
+            ok1=true;
+            console.log(ok1);
+        }
+        if(re2.test(inp2)){
+            ok2=true;
+            console.log(ok2);
+        }
+        if(6<inp3.length<16){
+            ok3=true;
+            console.log(ok3);
+        }
+        if(inp3==inp4){
+            ok4=true;
+            console.log(ok4);
+        }
+        if(ok1&&ok2&&ok3&&ok4){
+            txt5.innerHTML="注册成功！"
+            ok1=false;
+            ok2=false;
+            ok3=false;
+            ok4=false;
+            window.location.href="library.html"; 
         }
     }
 </script>
