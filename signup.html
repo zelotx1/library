@@ -12,7 +12,7 @@
         }
         
         .login{
-            background-color:rgba(96,96,96,0.8);
+            background-color:rgba(45,45,45,0.8);
             width: 500px;
             height: 530px;
             margin-top: 160px;
@@ -33,6 +33,13 @@
         #btns{
             width: 200px;
         }
+        #p1,#p2,#p3,#p4{
+            color:#FF6A6A;
+        }
+        #p5{
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -42,26 +49,122 @@
     <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
-    <input id="inp1" type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
+    <input id="inp1" type="text" class="form-control" placeholder="Name" onblur="input1()">
+    <p id="p1" class="navbar-right"></p>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Email</label>
-    <input id="inp2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Email">
+    <input id="inp2" type="email" class="form-control" placeholder="Email" onblur="input2()">
+    <p id="p2" class="navbar-right"></p>
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input id="inp3" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input id="inp3" type="password" class="form-control" placeholder="Password" onblur="input3()">
+    <p id="p3" class="navbar-right"></p>
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">Password Again</label>
-    <input id="inp4" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input id="inp4" type="password" class="form-control" placeholder="Password" onblur="input4()">
+    <p id="p4" class="navbar-right"></p>
   </div>
   <div id="btns" class="center-block">
-   <button id="btn2" type="submit" class="btn btn-default">注册</button>
+   <button id="btn2" type="button" onclick="check()" class="btn btn-default">注册</button>
+       <p id="p5" class="navbar-center"></p>
   </div>
   
 </form>
 </div>
 </div>
+<script type="text/javascript">
+    var c1；
+    var c2；
+    var c3；
+    var c4；
+//用户名验证
+    function input1(){
+        var name=document.getElementById("inp1").value;
+        var txt=document.getElementById("p1");
+        if(!name){
+            txt.innerHTML="请输入用户名";
+        }else{
+            txt.innerHTML="";
+            if(name.length>10||name.length<2){
+                txt.innerHTML="用户名请输入2-10位字母、中文或数字";
+            }
+            var re=  /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+            if(!re.test(name)){
+                txt.innerHTML="用户名请输入2-10位字母、中文或数字";
+            }
+        }
+    }
+//邮箱验证
+    function input2(){
+        var email=document.getElementById("inp2").value;
+        var txt=document.getElementById("p2");
+        if(!email){
+            txt.innerHTML="请输入邮箱";
+        }else{
+            txt.innerHTML="";
+            var re =/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if(!re.test(email)){
+                txt.innerHTML="请输入正确的邮箱地址";
+            }
+        }
+    }
+//密码验证
+    function input3(){
+        var pswd=document.getElementById("inp3").value;
+        var txt=document.getElementById("p3");
+        if(!pswd){
+            txt.innerHTML="请输入密码";
+        }else{
+            txt.innerHTML="";
+            if(pswd.length>16||pswd.length<6){
+                txt.innerHTML="请输入6-16位字符";
+            }
+        }
+    }
+//密码二次验证
+    function input4(){
+        var pswd=document.getElementById("inp3").value;
+        var pswd2=document.getElementById("inp4").value;
+        var txt=document.getElementById("p4");
+        if(!pswd2){
+            txt.innerHTML="请再次输入密码";
+        }else{
+            txt.innerHTML="";
+            if(pswd2.length>16||pswd.length<6){
+                txt.innerHTML="请输入6-16位字符";
+            }
+            if(pswd2!=pswd){
+                txt.innerHTML="两次密码不一致";
+            }
+        }
+    }
+//注册校验
+    function check(){
+        var inp1=document.getElementById("inp1").value;
+        var inp2=document.getElementById("inp2").value;
+        var inp3=document.getElementById("inp3").value;
+        var inp4=document.getElementById("inp4").value;
+        var txt1=document.getElementById("p1");
+        var txt2=document.getElementById("p2");
+        var txt3=document.getElementById("p3");
+        var txt4=document.getElementById("p4");
+        var txt5=document.getElementById("p5");
+        if(!inp1){
+            txt1.innerHTML="请输入用户名";
+        }
+        if(!inp2){
+            txt2.innerHTML="请输入邮箱";
+        }
+        if(!inp3){
+            txt3.innerHTML="请输入密码";
+        }
+        if(!inp4){
+            txt4.innerHTML="请再次输入密码";
+        }
+    }
+</script>
 </body>
 </html>
