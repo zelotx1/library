@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>图书管理系统</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
     <style>
         body{
             background-image: url(ima/bg1.jpg);
@@ -43,6 +43,11 @@
             display: inline-block;
             color: white;
         }
+        #p6{
+            display: inline-block;
+            text-align: center;
+            margin-left: 380px;
+        }
         #btn1{
             display: inline-block;
             background-color: #1C86EE;
@@ -51,11 +56,18 @@
             color: white;
         }
         .col-lg-4{
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
         #btn2{
             background-color: #EE3B3B;
             border: 0px;
+            display:none;
+        }
+        tr:hover #btn2{
+           display: block;
+        }
+        #p1,#p2,#p3,#p4,#p5,#p6{
+            color:#FF6A6A;
         }
     </style>
 </head>
@@ -92,27 +104,27 @@
 </nav>
 <!-- 添加书籍信息 -->
 <div id="ctr">
-<h4>添加书籍信息</h4>
-<button id="btn1" type="button" onclick="check()" class="btn btn-default navbar-right">添加</button>
+<h4>添加书籍信息</h4><p id="p6" class="center-block"></p>
+<button id="btn1" type="button" class="btn btn-default navbar-right">添加</button>
 <div class="row">
     <div class="col-lg-4">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon1">书名</span>
-          <input id="inp1" type="text" class="form-control" placeholder="书名" aria-describedby="sizing-addon1">
+          <input id="inp1" type="text" class="form-control" placeholder="书名" aria-describedby="sizing-addon1" onblur="input1()">
         </div>
         <p id="p1"></p>
     </div>
     <div class="col-lg-4">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon1">作者</span>
-          <input id="inp2" type="text" class="form-control" placeholder="作者" aria-describedby="sizing-addon1">
+          <input id="inp2" type="text" class="form-control" placeholder="作者" aria-describedby="sizing-addon1" onblur="input2()">
         </div>
         <p id="p2"></p>
     </div>
     <div class="col-lg-4">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon1">出版社</span>
-          <input id="inp3" type="text" class="form-control" placeholder="出版社" aria-describedby="sizing-addon1">
+          <input id="inp3" type="text" class="form-control" placeholder="出版社" aria-describedby="sizing-addon1" onblur="input3()">
         </div>
         <p id="p3"></p>
     </div>
@@ -121,22 +133,16 @@
     <div class="col-lg-4">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon1">数量</span>
-          <input id="inp4" type="text" class="form-control" placeholder="数量" aria-describedby="sizing-addon1">
+          <input id="inp4" type="text" class="form-control" placeholder="数量" aria-describedby="sizing-addon1" onblur="input4()">
         </div>
         <p id="p4"></p>
     </div>
     <div class="col-lg-4">
         <div class="input-group">
           <span class="input-group-addon" id="sizing-addon1">单价</span>
-          <input id="inp5" type="text" class="form-control" placeholder="单价" aria-describedby="sizing-addon1">
+          <input id="inp5" type="text" class="form-control" placeholder="单价" aria-describedby="sizing-addon1" onblur="input5()">
         </div>
         <p id="p5"></p>
-    </div>
-    <div class="col-lg-4">
-        <div class="input-group">
-          <span class="input-group-addon" id="sizing-addon1">@</span>
-          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-        </div>
     </div>
 </div>
 </div>
@@ -161,15 +167,112 @@
    </div>
     </div>
 <script>
+//校验输入的信息
+   var ok1;
+    var ok2;
+    var ok3;
+    var ok4;
+    var ok5;
+    function input1(){
+    var inp1=document.getElementById("inp1").value;
+    var txt1=document.getElementById("p1");
+        if(1<inp1.length<12){
+            ok1=true;
+        }
+        if(!inp1){
+            txt1.innerHTML="请输入书名";
+        }else{
+            txt1.innerHTML="";
+            if(inp1.length>12||inp1.length<1){
+                txt1.innerHTML="请输入1-12位字符";
+            }
+        }
+    }
+    function input2(){
+    var inp2=document.getElementById("inp2").value;
+    var txt2=document.getElementById("p2");
+        if(1<inp2.length<12){
+            ok2=true;
+        }
+        if(!inp2){
+            txt2.innerHTML="请输入作者";
+        }else{
+            txt2.innerHTML="";
+            if(inp2.length>12||inp2.length<1){
+                txt2.innerHTML="请输入1-12位字符";
+            }
+        }
+    }
+    function input3(){
+    var inp3=document.getElementById("inp3").value;
+    var txt3=document.getElementById("p3");
+        if(1<inp3.length<12){
+            ok3=true;
+        }
+        if(!inp3){
+            txt3.innerHTML="请输入出版社";
+        }else{
+            txt3.innerHTML="";
+            if(inp3.length>12||inp3.length<1){
+                txt3.innerHTML="请输入1-12位字符";
+            }
+        }
+    }
+    function input4(){
+    var inp4=document.getElementById("inp4").value;
+    var txt4=document.getElementById("p4");
+        if(1<inp4.length<12){
+            ok4=true;
+        }
+        if(!inp4){
+            txt4.innerHTML="请输入数量";
+        }else{
+            txt4.innerHTML="";
+            if(inp4.length>12||inp4.length<1){
+                txt4.innerHTML="请输入1-12位整数";
+            }
+            var re=/^\d+$/;
+            if(!re.test(inp4)){
+                txt4.innerHTML="请输入整数";
+            }
+        }
+    }
+    function input5(){
+    var inp5=document.getElementById("inp5").value;
+    var txt5=document.getElementById("p5");
+        if(1<inp5.length<12){
+            ok5=true;
+        }
+        if(!inp5){
+            txt5.innerHTML="请输入单价";
+        }else{
+            txt5.innerHTML="";
+            if(inp5.length>12||inp5.length<1){
+                txt5.innerHTML="请输入1-12位数字";
+            }
+            var re=/^[0-9]+(.[0-9]{2})?$/;
+            if(!re.test(inp5)){
+                txt5.innerHTML="请输入两位小数数字";
+            }
+        }
+    }
+//添加按钮校验
+    $("#btn1").click(function(){
+        if(ok1&&ok2&&ok3&&ok4&&ok5){
+            zhuan();
+        }else{
+            $("#p6").text("添加失败，请检查录入信息！");
+        }
+    });
 //创建信息data数组
-      var data=[{"book":"《解忧杂货店》","author":"东野圭吾","pub":"南海出版社","num":35,"price":"￥27.30<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
-           {"book":"《芳华》","author":"严歌苓","pub":"人民文学出版社","num":127,"price":"￥31"},
-           {"book":"《我们仨》","author":"杨绛","pub":"人民文学出版社","num":54,"price":"￥15.9"},
-           {"book":"《原则》","author":"瑞·达利欧","pub":"中信出版社","num":256,"price":"￥66"},
-           {"book":"《白夜行》","author":"东野圭吾","pub":"南海出版社","num":155,"price":"￥41.10"},
-           {"book":"《我与地坛》","author":"史铁生","pub":"人民文学出版社","num":94,"price":"￥19.60"}];
+      var data=[{"book":"《解忧杂货店》","author":"东野圭吾","pub":"南海出版社","num":35,"price":"￥27.30<button id='btn2'  onclick='del(this)' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《芳华》","author":"严歌苓","pub":"人民文学出版社","num":127,"price":"￥31<button onclick='del(this)' id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《我们仨》","author":"杨绛","pub":"人民文学出版社","num":54,"price":"￥15.90<button id='btn2' onclick='del(this)' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《原则》","author":"瑞·达利欧","pub":"中信出版社","num":256,"price":"￥66<button id='btn2' onclick='del(this)' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《白夜行》","author":"东野圭吾","pub":"南海出版社","num":155,"price":"￥41.10<button id='btn2' onclick='del(this)' class='btn btn-primary navbar-right btn-xs'>删除</button>"},
+           {"book":"《我与地坛》","author":"史铁生","pub":"人民文学出版社","num":94,"price":"￥19.60<button onclick='del(this)' id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>"}];
 //把json数据加载到页面
-    window.onload=function fuuu(){
+    window.onload=function(){
 
         var table=document.getElementById("table");
         for(var i=0;i<data.length;i++){
@@ -187,7 +290,7 @@
         }
     }
 //把输入框内容转换为json格式
-    $("#btn1").click(function(){
+    function zhuan(){
       parArr = {};
        var book = $('#inp1').val().replace(/(^\s*)|(\s*$)/g, "");
        parArr.book = book;
@@ -197,7 +300,7 @@
        parArr.pub = pub;
        var num = $('#inp4').val().replace(/(^\s*)|(\s*$)/g, "");
        parArr.num = num;
-       var price = $('#inp5').val().replace(/(^\s*)|(\s*$)/g, "")+"<button id='btn2' class='btn btn-primary navbar-right btn-xs'>删除</button>";
+       var price = $('#inp5').val().replace(/(^\s*)|(\s*$)/g, "")+"<button id='btn2' onclick='del(this)' class='btn btn-primary navbar-right btn-xs'>删除</button>";
        parArr.price = price;
        var params = JSON.stringify(parArr);
        var str1 = JSON.parse(params); 
@@ -221,7 +324,11 @@
         }
         }
         add();
-    });
+    }
+//删除按钮
+    function del(data){
+	$(data).parent().parent().remove(); 
+    }  
 </script>
 </body>
 </html>
