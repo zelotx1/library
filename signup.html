@@ -23,15 +23,16 @@
         h3{
             text-align: center;
         }
-        #btn2{
+        #btn2,#btn1{
             background-color: #1C86EE;
             width: 198px;
             margin-top: 25px;
-                        border: 0px;
+            border: 0px;
             color: white;
         }
         #btns{
-            width: 200px;
+            width: 500px;
+            margin-top: 30px;
         }
         #p1,#p2,#p3,#p4{
             color:#FF6A6A;
@@ -39,6 +40,12 @@
         #p5{
             text-align: center;
             margin-top: 10px;
+        }
+        #btn2:hover{
+            border: 1px solid white;
+        }
+        #btn1:hover{
+            border: 1px solid white;
         }
     </style>
 </head>
@@ -68,10 +75,10 @@
     <p id="p4" class="navbar-right"></p>
   </div>
   <div id="btns" class="center-block">
+     <a href="library.html" id="btn1" type="button" class="btn btn-default ">登录</a>
    <button id="btn2" type="button" onclick="check()" class="btn btn-default">注册</button>
        <p id="p5" class="navbar-center"></p>
   </div>
-  
 </form>
 </div>
 </div>

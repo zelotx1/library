@@ -12,7 +12,7 @@
         }
         
         .login{
-            background-color:rgba(96,96,96,0.8);
+            background-color:rgba(45,45,45,0.8);
             width: 500px;
             height: 400px;
             margin-top: 160px;
@@ -35,8 +35,28 @@
         #btn2{
             background-color: #1C86EE;
         }
+        #btn2:hover{
+            border: 1px solid white;
+        }
+        #btn1:hover{
+            border: 1px solid white;
+        }
         #btns{
-            width: 500px;
+            width: 550px;
+            margin-top: 30px;
+        }
+        #p1,#p2{
+            color:#FF6A6A;
+        }
+        #p3{
+            text-align: center;
+            margin-top: 20px;
+        }
+        #tap{
+            margin-top: 110px;
+            background-color: rgba(45,45,45,0.8);
+            border-radius: 5px;
+            color: white;
         }
     </style>
 </head>
@@ -47,19 +67,61 @@
     <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
-    <input id="inp1" type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
+    <input id="inp1" onblur="input1()" type="text" class="form-control" id="exampleInputEmail1" placeholder="Name">
+    <p id="p1" class="navbar-right"></p>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input id="inp2" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input id="inp2" onblur="input2()" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <p id="p2" class="navbar-right"></p>
   </div>
   <div id="btns" class="center-block">
-   <a  href="#"id="btn1" type="button" class="btn btn-default ">登录</a>
+   <a  id="btn1" type="button" onclick="check()" class="btn btn-default ">登录</a>
    <a  href="signup.html"id="btn2" type="button" class="btn btn-default">注册</a>
   </div>
-  
+  <p id="p3" ></p>
 </form>
+   <p id="tap" style="text-align: center">用户名：yangyichao 密码：123456</p>
 </div>
 </div>
+<script>
+    function input1(){
+        var name=document.getElementById("inp1").value;
+        var txt=document.getElementById("p1");
+        if(!name){
+            txt.innerHTML="请输入用户名";
+        }else{
+            txt.innerHTML="";
+        }
+    }
+    function input2(){
+        var name=document.getElementById("inp2").value;
+        var txt=document.getElementById("p2");
+        if(!name){
+            txt.innerHTML="请输入密码";
+        }else{
+            txt.innerHTML="";
+        }
+    }
+    function check(){
+        var name=document.getElementById("inp1").value;
+        var txt1=document.getElementById("p1");
+        var psd=document.getElementById("inp2").value;
+        var txt2=document.getElementById("p2");
+        var txt3=document.getElementById("p3");
+        if(!name){
+            txt1.innerHTML="请输入用户名";
+        }
+        if(!psd){
+            txt2.innerHTML="请输入密码";
+        }
+        if(name=="yangyichao"&&psd==123456){
+            txt3.innerHTML="登录成功！";
+            window.location.href="read.html";
+        }else{
+            txt3.innerHTML="用户名或密码错误!";
+        }
+    }
+</script>
 </body>
 </html>
